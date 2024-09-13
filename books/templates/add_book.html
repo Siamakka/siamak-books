@@ -1,8 +1,0 @@
-<!-- books/templates/add_book.html -->
-<h1>add_book</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
-<a href="{% url 'book_list' %}">Return to books list</a>
