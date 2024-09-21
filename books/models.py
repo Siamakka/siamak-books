@@ -10,8 +10,8 @@ class Author(models.Model):
         )
     email = models.EmailField(
         'Email',
-        null=False,
-        unique=True,
+        null=True,
+        blank=True,
         )
     created_at = models.DateTimeField(
         'Created time',
@@ -36,9 +36,11 @@ class Book(models.Model):
         )
     value = models.BigIntegerField(
         'Value',
+        default=0
     )
     quantity = models.IntegerField(
-        'Numbers of books'
+        'Numbers of books',
+        default=1
     )
     date_published = models.DateField(
         'Publish Date',

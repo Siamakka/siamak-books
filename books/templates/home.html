@@ -40,11 +40,11 @@
   </style>
   <h1>Welcome to the Library!</h1>
   <p>Use this site to manage the library's collection of books and authors.</p>
-  <form action="{% url 'catalog:show-books' %}" method="get">
+  <form action="{% url 'books:book_list' %}" method="get">
     <button type="submit" class="button">See all books</button>
   </form>
   <br>
-  <form action="{% url 'catalog:show-authors' %}" method="get">
+  <form action="{% url 'books:author_list' %}" method="get">
     <button type="submit" class="button">See all authors</button>
   </form>
 {% endblock %}
