@@ -10,11 +10,12 @@ class Author(models.Model):
         )
     email = models.EmailField(
         'Email',
-        unique=True
+        null=False,
+        unique=True,
         )
     created_at = models.DateTimeField(
         'Created time',
-        auto_now_add=True
+        default=date.today
         )
 
     def __str__(self) -> str:
@@ -45,6 +46,7 @@ class Book(models.Model):
     )
     genre = models.CharField(
         'Genre',
+        max_length=250
         )
     updated_at = models.DateField(
         'Last Update Date',
@@ -52,7 +54,7 @@ class Book(models.Model):
     )
     created_at = models.DateField(
         'Created Time',
-        auto_now_add=True
+        default=date.today
     )
 
     def __str__(self) -> str:
@@ -61,8 +63,8 @@ class Book(models.Model):
     def details(self) -> str:
         return f"Price: {self.value}, Published at: {self.date_published}, Quantity: {self.quantity}"
 
-class Genre(models.Model):
-    name = models.CharField(max_length=100)
+# class Genre(models.Model):
+#     name = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
