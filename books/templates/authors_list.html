@@ -16,7 +16,7 @@
             {% for author in authors %}
                 <tr>
                     <td>
-                        <a href="{% url 'books:edit-author' author.id %}">{{ author.author }}</a>
+                        <a href="{% url 'books:books_of_author' author_name=author.author country=author.author_country %}">{{ author.author }}</a>
                     </td>
                     <td>{{ author.author_country }}</td>
                 </tr>
