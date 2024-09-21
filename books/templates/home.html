@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block header_title %}Home Page{% endblock %}
-{% block title %}Home Page{% endblock %}
+{% block title %}Home{% endblock %}
 {% block content %}
   <style>
   .button {
@@ -38,13 +38,12 @@
     }
   }
   </style>
-  <h1>Welcome to the Library!</h1>
-  <p>Use this site to manage the library's collection of books and authors.</p>
+  <h1>Welcome to the Siamak's book manager!</h1>
   <form action="{% url 'books:book_list' %}" method="get">
-    <button type="submit" class="button">See all books</button>
+    <button type="submit" class="button">See list of the books</button>
   </form>
   <br>
   <form action="{% url 'books:author_list' %}" method="get">
-    <button type="submit" class="button">See all authors</button>
+    <button type="submit" class="button">See list of the authors</button>
   </form>
 {% endblock %}

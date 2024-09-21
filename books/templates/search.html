@@ -1,16 +1,18 @@
 {% extends "base.html" %}
-{% block header_title %}List of all Books{% endblock %}
+{% block header_title %}Search{% endblock %}
 {% block back_button %}
     <a href="{% url 'books:home' %}" class="button">*Back to Home</a>
 {% endblock %}
-{% block author_list_button %}
-    <a href="{% url 'books:author_list' %}" class="button">*Authors_list</a>
+{% block book_list_button %}
+    <a href="{% url 'books:book_list' %}" class="button">*List of books</a>
 {% endblock %}
-{% block search_button %}
-    <a href="{% url 'books:search' %}" class="button">*Search</a>
-{% endblock %}
-{% block title %}List of all Books{% endblock %}
+{% block title %}Search Books and Authors{% endblock %}
 {% block content %}
+    <form action="{% url 'books:search' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="button search">Search</button>
+    </form>
     <form action="{% url 'books:add-book' %}" method="get">
         <br>
         <button type="submit" class="button">Add New Book</button>

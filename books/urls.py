@@ -13,5 +13,5 @@ urlpatterns = [
     path("edit_author/<int:author_id>/", views.edit_author, name="edit-author"),
     path("delete_author/<int:author_id>/",
          views.delete_author, name="delete-author"),
-    path("filter_books/", views.filter_books, name="filter-books"),
+    path("search/", views.filter_books, name="search"),
 ]

@@ -24,12 +24,28 @@ class AuthorForm(forms.ModelForm):
 
 class SearchForm(forms.Form):
     search_text = forms.CharField(
-        max_length=100, required=False, label="Search", widget=forms.TextInput(attrs={"placeholder": "Book Name or Author Name"}))
+        max_length=100,
+        required=False,
+        label="Search",
+        widget=forms.TextInput(attrs={"placeholder": "Book Name or Author Name"})
+        )
     published_date_min = forms.DateField(
-        required=False, widget=DateInput(), label="Published Date From")
+        required=False,
+        widget=DateInput(),
+        label="Published Date From"
+        )
     published_date_max = forms.DateField(
-        required=False, widget=DateInput(), label="Published Date To")
-    price_min = forms.DecimalField(required=False, label="Price From", widget=forms.NumberInput(
-        attrs={"placeholder": "Price From"}))
-    price_max = forms.DecimalField(required=False, label="Price To", widget=forms.NumberInput(
-        attrs={"placeholder": "Price To"}))
+        required=False,
+        widget=DateInput(),
+        label="Published Date To"
+        )
+    price_min = forms.DecimalField(
+        required=False,
+        label="Price From",
+        widget=forms.NumberInput(attrs={"placeholder": "Price From"})
+        )
+    price_max = forms.DecimalField(
+        required=False,
+        label="Price To",
+        widget=forms.NumberInput(attrs={"placeholder": "Price To"})
+        )

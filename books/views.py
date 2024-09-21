@@ -21,8 +21,8 @@ def home(request):
 
 def book_list(request):
     books = Book.objects.all()
-    search_form = SearchForm()
-    return render(request, 'book_list.html', {'books': books, 'form': search_form})
+    # search_form = SearchForm()
+    return render(request, 'book_list.html', {'books': books})
 
 
 def book_create(request):
@@ -103,9 +103,6 @@ def filter_books(request):
 
         books = Book.objects.all()
 
-        # print(search_text, published_date_min,
-        #       published_date_max, min_value, max_value)
-
         if search_text:
             books = books.filter(name__icontains=search_text) | books.filter(
                 author__name__icontains=search_text)
@@ -118,50 +115,6 @@ def filter_books(request):
         if max_value:
             books = books.filter(price__lte=max_value)
 
-        # print(books)
-        return render(request, "book_list.html", {"books": books, "form": form})
+        return render(request, "search.html", {"books": books, "form": form})
     else:
-        return render(request, "book_list.html", {"form": form})
-
-
-
-# def book_detail(request, pk):
-#     book = get_object_or_404(Book, pk=pk)
-#     return render(request, 'books/book_detail.html', {'book': book})
-
-
-# def book_create(request):
-#     if request.method == 'POST':
-#         form = BookForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('book_list')
-#     else:
-#         form = BookForm()
-#     return render(request, 'books/book_form.html', {'form': form})
-
-# def book_edit(request, pk):
-#     book = get_object_or_404(Book, pk=pk)
-#     if request.method == 'POST':
-#         form = BookForm(request.POST, instance=book)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('book_detail', pk=book.pk)
-#     else:
-#         form = BookForm(instance=book)
-#     return render(request, 'books/book_form.html', {'form': form})
-
-# def book_delete(request, pk):
-#     book = get_object_or_404(Book, pk=pk)
-#     if request.method == 'POST':
-#         book.delete()
-#         return redirect('book_list')
-#     return render(request, 'books/book_confirm_delete.html', {'book': book})
-
-
-# def book_confirm_delete(request, pk):
-#     book = get_object_or_404(Book, pk=pk)
-#     if request.method == "POST":
-#         book.delete()
-#         return redirect('book_list')
-#     return render(request, 'books/book_confirm_delete.html', {'book': book})
+        return render(request, "search.html", {"form": form})
