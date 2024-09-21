@@ -2,26 +2,6 @@ from django.db import models
 from datetime import date
 
 
-class Author(models.Model):
-
-    name = models.CharField(
-        max_length=250,
-        db_index=True
-        )
-    email = models.EmailField(
-        'Email',
-        null=True,
-        blank=True,
-        )
-    created_at = models.DateTimeField(
-        'Created time',
-        default=date.today
-        )
-
-    def __str__(self) -> str:
-        return self.name
-
-
 class Book(models.Model):
 
     title = models.CharField(
@@ -29,11 +9,16 @@ class Book(models.Model):
         max_length=250,
         db_index=True
         )
-    author = models.ForeignKey(
-        Author,
-        on_delete=models.CASCADE,
-        verbose_name='Author',
+    author = models.CharField(
+        'Author',
+        max_length=250,
         )
+    author_country = models.CharField(
+        'Country',
+        max_length=100,
+        null=True,
+        blank=True,
+    )
     value = models.BigIntegerField(
         'Value',
         default=0
@@ -64,9 +49,3 @@ class Book(models.Model):
     
     def details(self) -> str:
         return f"Price: {self.value}, Published at: {self.date_published}, Quantity: {self.quantity}"
-
-# class Genre(models.Model):
-#     name = models.CharField(max_length=100)
-
-#     def __str__(self):
-#         return self.name

@@ -21,7 +21,8 @@
             <tr>
                 <th>Book Title</th>
                 <th>Author</th>
-                <th>Published at</th>
+                <th>Country</th>
+                <th>Genre</th>
                 <th>Quantity</th>
                 <th>Price</th>
             </tr>
@@ -30,12 +31,15 @@
             {% for book in books %}
                 <tr>
                     <td>
-                        <a href="{% url 'books:edit-book' book.id %}">{{ book.name }}</a>
+                        <a href="{% url 'books:edit-book' book.id %}">{{ book.title }}</a>
                     </td>
-                    <td>{{ book.author }}</td>
-                    <td>{{ book.published_at }}</td>
+                    <td>
+                        <a href="{% url 'books:books_of_author' author_name=book.author country=book.author_country %}">{{ book.author }}</a>
+                    </td>
+                    <td>{{ book.author_country }}</td>
+                    <td>{{ book.genre }}</td>
                     <td>{{ book.quantity }}</td>
-                    <td>{{ book.price }}</td>
+                    <td>{{ book.value }}</td>
                 </tr>
             {% endfor %}
         </tbody>
