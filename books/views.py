@@ -1,16 +1,10 @@
 from django.shortcuts import render
-from django.shortcuts import get_object_or_404
-from django.shortcuts import redirect
-from django.urls import reverse_lazy
-from django.views.generic import DeleteView
 from .models import Book
 from .forms import BookForm
-from django.views.decorators.http import require_POST
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Book
 from .forms import BookForm 
-from .forms import AuthorForm
 from .forms import SearchForm
 
 def home(request):
@@ -51,31 +45,6 @@ def edit_book(request, book_id):
         return HttpResponseRedirect(reverse('books:book_list'))
     else:
         return render(request, "edit_book.html", {"form": form, "book_id": book_id})
-    
-def edit_author(request, author_id):
-    author = Book.objects.get(id=author)
-    form = AuthorForm(instance=author)
-    if request.method == "GET":
-        return render(request, "edit_author.html", {"form": form, "author_id": author})
-
-    form = AuthorForm(request.POST, instance=author)
-    if form.is_valid():
-        form.save(commit=True)
-        return HttpResponseRedirect(reverse("books:author_list"))
-    else:
-        return render(request, "edit_author.html", {"form": form, "author_id": author})
-    
-def add_author(request):
-    form = AuthorForm()
-    if request.method == 'GET':
-        return render(request, 'add_author.html', {'form': form})
-    
-    form = AuthorForm(request.POST)
-    if form.is_valid():
-        form.save(commit=True)
-        return HttpResponseRedirect(reverse('books:authors_list'))
-    else:
-        return render(request, 'add_author.html', {'form': form})
 
 
 def delete_book(request, book_id):

@@ -46,4 +46,8 @@
   <form action="{% url 'books:author_list' %}" method="get">
     <button type="submit" class="button">See list of the authors</button>
   </form>
+  <br>
+  <form action="{% url 'books:add-book' %}" method="get">
+    <button type="submit" class="button">Add new book</button>
+  </form>
 {% endblock %}

@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block header_title %}Search{% endblock %}
 {% block back_button %}
-    <a href="{% url 'books:home' %}" class="button">*Back to Home</a>
+    <a href="{% url 'books:home' %}" class="button">Back to Home</a>
 {% endblock %}
 {% block book_list_button %}
-    <a href="{% url 'books:book_list' %}" class="button">*List of books</a>
+    <a href="{% url 'books:book_list' %}" class="button">List of books</a>
 {% endblock %}
 {% block title %}Books by {{ author_name }}{% endblock %}
 {% block content %}
