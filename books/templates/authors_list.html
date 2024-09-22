@@ -2,6 +2,12 @@
 {% block back_button %}
     <a href="{% url 'books:home' %}" class="button">Back to Home</a>
 {% endblock %}
+{% block search_button %}
+    <a href="{% url 'books:search' %}" class="button">Search</a>
+{% endblock %}
+{% block book_list_button %}
+    <a href="{% url 'books:book_list' %}" class="button">List of Books</a>
+{% endblock %}
 {% block title %}List of all Authors{% endblock %}
 {% block content %}
     <br>

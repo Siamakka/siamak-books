@@ -3,51 +3,32 @@
 {% block title %}Home{% endblock %}
 {% block content %}
   <style>
-  .button {
-    background-color: #e0fafb;
-    border: 2px solid #000000;
-    border-radius: 30px;
-    box-shadow: #000000 4px 4px 0 0;
-    color: #000000;
-    cursor: pointer;
-    display: inline-block;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 0 18px;
-    line-height: 50px;
-    text-align: center;
-    text-decoration: none;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-
-  .button:hover {
-    background-color: #fff;
-  }
-
-  .button:active {
-    box-shadow: #000000 2px 2px 0 0;
-    transform: translate(2px, 2px);
-  }
-
-  @media (min-width: 768px) {
-    .button {
-      min-width: 120px;
-      padding: 0 25px;
+    /* Center the entire content vertically and horizontally */
+    .center-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3px;
     }
-  }
   </style>
+
   <h1>Welcome to the Siamak's book manager!</h1>
-  <form action="{% url 'books:book_list' %}" method="get">
-    <button type="submit" class="button">See list of the books</button>
-  </form>
-  <br>
-  <form action="{% url 'books:author_list' %}" method="get">
-    <button type="submit" class="button">See list of the authors</button>
-  </form>
-  <br>
-  <form action="{% url 'books:add-book' %}" method="get">
-    <button type="submit" class="button">Add new book</button>
-  </form>
+
+  <!-- Use the 'center-content' class to center everything -->
+  <div class="center-content">
+
+    <form action="{% url 'books:book_list' %}" method="get">
+      <button type="submit" class="button">See list of the books</button>
+    </form>
+
+    <form action="{% url 'books:author_list' %}" method="get">
+      <button type="submit" class="button">See list of the authors</button>
+    </form>
+
+    <form action="{% url 'books:add-book' %}" method="get">
+      <button type="submit" class="button">Add new book</button>
+    </form>
+
+  </div>
 {% endblock %}
