@@ -67,13 +67,13 @@ def filter_books(request):
         if search_text:
             books = books.filter(title__icontains=search_text) or books.filter(author__icontains=search_text)
         if published_date_min:
-            books = books.filter(published_at__gte=published_date_min)
+            books = books.filter(date_published__gte=published_date_min)
         if published_date_max:
-            books = books.filter(published_at__lte=published_date_max)
+            books = books.filter(date_published__lte=published_date_max)
         if min_value:
-            books = books.filter(price__gte=min_value)
+            books = books.filter(value__gte=min_value)
         if max_value:
-            books = books.filter(price__lte=max_value)
+            books = books.filter(value__lte=max_value)
 
         return render(request, "search.html", {"books": books, "form": form})
     else:
