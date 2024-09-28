@@ -1,5 +1,7 @@
 from django.contrib import admin
+from django.contrib import messages
 from .models import Book
+from django.db.models import F
 
 
 # Register your models here.
@@ -34,3 +36,16 @@ class bookAdmin(admin.ModelAdmin):
         'value',
         'author_country',
     ]
+
+    actions = [
+        'add_value',
+    ]
+
+    def add_value(self, request, queryset):
+        updated_books_count = queryset.update(value=F('value') + 10)
+        self.message_user(
+            request,
+            f'Added value to {updated_books_count} books values',
+            messages.SUCCESS,
+        )
+    add_value.short_description = 'Add 10 to values'
