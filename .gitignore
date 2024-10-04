@@ -141,3 +141,4 @@ dmypy.json
 
 # Other
 .DS_Store
+.pyc
