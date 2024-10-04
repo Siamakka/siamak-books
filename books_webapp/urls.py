@@ -19,12 +19,13 @@ from django.urls import path, include
 from books.views import home
 from django.urls import path, include
 from rest_framework import routers
-from books.viewsets import UserViewSet
+from books.viewsets import UserViewSet, BookViewSet
 
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
+router.register(r'books', BookViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
